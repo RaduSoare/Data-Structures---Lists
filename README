@@ -1,0 +1,132 @@
+===============================================================================
+Tema 1 SD: Echipe de fotbal
+Student: Soare Radu-Georgian
+Grupa: 313CD
+===============================================================================
+
+CERINTA A
+
+*initialize_clubs
+- aloca clubul ce urmeaza sa fie initializat
+- itereaza prin array-ul de nume si asigneaza fiecarui club numele tratand
+cazul in care trebuie introdus ca prim club din list sau ca ultimul
+
+*add_club
+- aloca un nou club
+- adauga clubul la inceput daca este lista goala sau itereaza pana la finalul
+listei, apoi il insereaza la final
+
+*add_player
+- aloca un jucator nou
+- cauta clubul in lista de cluburi
+- trateaza cazurile in care clubul este gol, cand trebuie inserat ca prim
+jucator in club si cazul in care trebuie inserat pe o pozitie intermediara
+- pentru a alege pozitia de inserare compara lexicografic pozitia jucatorului,
+in caz de egalitate compara scorul, in caz de egalitate compara numele acestuia
+cu datele celorlalti jucatori existenti deja in lista
+
+*transfer_player
+- verifica daca jucatorul este accidentat sau nu pentru a putea stii in ce 
+lista trebuie adaugat dupa transfer
+- sunt create copii dupa cateva date despre jucator
+- jucatorul este sters din clubul vechi si apar 2 cazuri: daca este sanatos,
+doar este introdus in clubul nou, iar daca este accidentat intai este adaugat
+la clubul nou, apoi este trecut in lista jucatorilor accidentati
+
+*remove_player
+- verifica daca jucatorul este accidentat sau nu pentru a putea stii din ce 
+lista sa il elimine
+- sunt tratate cazurile in care este singurul jucator din lista, primul jucator
+din lista, ultimul jucator si daca are pozitie intermediara
+- dupa ruperea legaturilor de lista, se elibereaza memoria alocata pentru
+nume, pozitie si jucator 
+
+*update_score
+- se asigura ca scorul ramane in intervalul [-100,100]
+- verifica daca jucatorul este accidentat sau nu pentru a putea stii in ce 
+lista trebuie cautat jucatorul care sufera modificarea
+- jucatorul este sters din clubul vechi
+- in functie de starea de sanatate este introdus in lista de jucatori sau
+in lista de jucatori accidentati
+- am ales aceasta implementare pentru a ma folosi de functionalitatea
+lui add_player care ma asigura ca dupa modificarea scorului lista de
+jucatori o sa ramana sortata
+
+*update_game_position
+- aceeasi idee ca update_score + modificarea pozitiei
+
+*add_injury
+- aloca un jucator nou
+- cauta clubul in lista de cluburi
+- trateaza cazurile in care lista e goala, in care jucatorul trebuie adaugat
+pe prima pozitie si cele in care trebuie adaugat pe pozitie intermediara
+
+*recover_from_injury
+- cauta clubul si jucatorul primite ca parametru
+- retine date despre jucator
+- elimina jucatorul din lista de accidentati si il adauga in lista de jucatori
+
+*search_club
+- cauta clubul primit ca parametru si intoarce un pointer la acesta
+
+*search
+- verifica daca jucatorul primit ca parametru exista si returneaza o constanta
+care sa spuna in ce lista se afla jucatorul (1 - lista de jucatori,
+0 - lista de accidentati, -1 - daca jucatorul nu exista)
+
+*search_player
+- cauta jucatorul primit ca parametru si intoarce un pointer la acesta
+
+CERINTA B
+
+*TTeam
+- tip de date create pentru a retine anumite date despre jucatori
+
+*union_teams
+- cauta cele doua cluburi si le parcurge pe rand
+- retine datele jucatorilor neaccidentati intr-un array de tip TTeam
+- sorteaza array-ul dupa criteriul cerut apoi avand elementele deja ordonate
+le adauga in lista ce urmeaza sa fie returnata cu ajutorul functiei "push"
+
+*get_best_player
+- intereaza prin listele de jucatori si retine datele fiecarui jucator
+de pe pozitia primita ca parametru
+- daca jucatorul nu este gasit, array-ul este dezalocat si se returneaza NULL
+- introduce in lista doar primul element din array-ul sortat crescator dupa scor
+reprezentand cel mai bun jucator pe pozitia respectiva
+
+*get_top_players
+- itereaza prin listele de jucatori neaccidentati si insereaza intr-un array 
+jucatorii pe care ii sorteaza, apoi insereaza primii N intr un alt array si 
+il dezaloca pe primul
+- noul array este sortat incat sa indeplineasca conditiile cerute apoi 
+jucatorii sunt inserati intr-o lista
+
+*get_players_by_score && get_players_by_position
+- aceeasi idee ca la get_best_player 
+
+*get_best_team
+- aloca un array de cuvinte care retine pozitiile de jos posibile
+- pentru fiecare pozitie de joc creeaza o lista cu toti jucatorii de pe pozitia
+respectiva cu ajutorul functiei "get_players_by_position" pe care apoi o 
+introduce intr-un club temporar pentru a se putea folosi de functia 
+"get_top_players" care extrage cei mai buni K jucatori de pe pozitia repsectiva
+(K numarul de jucatori cerut din fiecare pozitie, valoarea stocata intr-un array)
+- datele jucatorilor sunt salvate intr-un array care apoi e sortat si in final 
+jucatorii respectivi sunt introdusi intr-o lista
+
+*compare_psn
+- functie de comparare dupa pozitie, scor si nume
+
+*compare_aux
+- functie de comparare dupa scor si nume
+
+*push
+- functie care adauga un jucator la sfarsitul unei liste de jucatori
+
+
+
+
+
+
+
